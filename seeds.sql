@@ -3,7 +3,10 @@ INSERT INTO department
 VALUES
     ("Kitchen"),
     ("Front Desk"),
-    ("Housekeeping");
+    ("Housekeeping"),
+    ("Engineering"),
+    ("Banquets"),
+    ("Human Resources")
 
 INSERT INTO role
     (title, salary, department_id)
