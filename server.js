@@ -2,6 +2,7 @@ const mysql = require("mysql");
 const inquirer = require("inquirer");
 const cTable = require("console.table");
 const Department = require("./lib/Department");
+const Role = require("./lib/Role");
 
 const connection = mysql.createConnection({
   host: 3306,
@@ -17,6 +18,7 @@ connection.connect(function (err) {
 });
 
 const department = new Department();
+const role = new Role();
 
 function contents() {
   inquirer
@@ -32,6 +34,8 @@ function contents() {
         "Remove Employee",
         "Add Department",
         "Remove Department",
+        "Add Title/Role",
+        "Remove Title/Role",
         "Update Employee Role",
         "Update Employee Manager",
         "Exit",
@@ -68,6 +72,14 @@ function contents() {
           console.log("You have selected: " + res.choice);
           department.deleteDep();
           break;
+        case "Add Title/Role":
+          console.log("You have selected: " + res.choice);
+          role.addRole();
+          break;
+        case "Remove Title/Role":
+          console.log("You have selected: " + res.choice);
+          role.removeRole();
+          break;
         case "Update Employee Role":
           console.log("You have selected: " + res.choice);
           //function
@@ -75,6 +87,9 @@ function contents() {
         case "Update Employee Manager":
           console.log("You have selected: " + res.choice);
           //function
+          break;
+        case "Exit":
+          connection.end();
           break;
       }
     });
