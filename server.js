@@ -3,6 +3,7 @@ const inquirer = require("inquirer");
 const cTable = require("console.table");
 const Department = require("./lib/Department");
 const Role = require("./lib/Role");
+const Employee = require("./lib/Employee");
 
 const connection = mysql.createConnection({
   host: 3306,
@@ -19,6 +20,7 @@ connection.connect(function (err) {
 
 const department = new Department();
 const role = new Role();
+const employee = new Employee();
 
 function contents() {
   inquirer
@@ -45,11 +47,11 @@ function contents() {
       switch (res.choice) {
         case "View All Employees":
           console.log("You have selected: " + res.choice);
-          //function
+          employee.displayEmployees();
           break;
         case "View All Employees by Department":
           console.log("You have selected: " + res.choice);
-          //function
+          role.displayRoles();
           break;
         case "View All Employees by Manager":
           console.log("You have selected: " + res.choice);
