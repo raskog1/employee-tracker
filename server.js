@@ -1,26 +1,16 @@
-const mysql = require("mysql");
+// Declare dependencies
 const inquirer = require("inquirer");
 const cTable = require("console.table");
+const db = require("./lib/db.js");
 const Department = require("./lib/Department");
 const Role = require("./lib/Role");
 const Employee = require("./lib/Employee");
 
-const connection = mysql.createConnection({
-  host: 3306,
-  user: "root",
-  password: "root",
-  database: "company_db",
-});
-
-connection.connect(function (err) {
-  if (err) throw err;
-  // Declare function to kick things off with...
-  contents();
-});
-
 const department = new Department();
 const role = new Role();
 const employee = new Employee();
+
+contents();
 
 function contents() {
   inquirer
@@ -91,7 +81,7 @@ function contents() {
           //function
           break;
         case "Exit":
-          connection.end();
+          //db.end();
           break;
       }
     });
